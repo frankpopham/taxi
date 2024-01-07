@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+duckdb
+taxi+_zone_lookup.csv
+nyc_taxi_year_by_month/

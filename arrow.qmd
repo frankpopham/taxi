@@ -1,0 +1,130 @@
+---
+title: "Working efficiently with big data"
+author: "Frank Popham"
+format: html
+date: today
+editor: visual
+self-contained: true
+code-fold: true
+code-tools: true
+execute: 
+  warning: false
+---
+
+```{r}
+#| label: packages 
+#| echo: false
+library(arrow)
+library(tidyverse)
+library(duckdb)
+library(tictoc)
+library(glue)
+library(knitr)
+```
+
+### Introduction
+
+The purpose of this note is to illustrate the ease with which we can wrangle big data (tens of millions of observations).
+
+First, we store the data in an efficient format using [Paraquet](https://parquet.apache.org/docs/).
+
+Second, we analyse Paraquet files using [Apache Arrow in R](https://arrow.apache.org/docs/r/) and [DuckDB](https://duckdb.org/) for SQL.
+
+### Data
+
+To illustrate I am going to use two years worth of open data that is truly big data, 311 million [New York yellow taxi journeys](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) in 2014 and 2015 covering 21 variables.
+
+The data if held in csv format are very large. The January 2014 data is 1.2GB so roughly 30GB in total for the whole 24 months. I don't have a copy of Microsoft SQL server software on my home computer where I am writing this but the January 2014 table is roughly 1.4GB in a in-process SQL database.
+
+### Efficient storage
+
+Paraquet format is specifically designed for working with big data efficiently. The January 2014 data in Paraquet format is just 0.164GB. In Paraquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.
+
+### Efficient analysis
+
+We open the dataset with one command in R.
+
+```{r}
+ny_taxi <- open_dataset("nyc_taxi_year_by_month")
+
+```
+
+The question we are going to ask is how many journeys started in each of New York's boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Paraquet format.
+
+```{r}
+
+ny_zones <- read_csv_arrow("taxi+_zone_lookup.csv") %>%
+  as_arrow_table(schema = schema(LocationID = int64(),
+                                 Borough = utf8(),
+                                 Zone = utf8(),
+                                 service_zone = utf8())
+  )
+ 
+  
+```
+
+Through R lets confirm that this is big data with a healthy number of columns.
+
+```{r}
+glue("There are { nrow(ny_taxi) } rows of data")
+glue("There are { ncol(ny_taxi) } columns")
+```
+
+Code for arrow with R
+
+```{r}
+#| label: R with arrow
+tic()
+borough_arrow <- ny_taxi %>%
+  select(PULocationID) %>%
+  left_join(ny_zones, join_by(PULocationID == LocationID), copy = TRUE) %>%
+  group_by(Borough) %>%
+  summarise(n_arrow = n()) %>%
+  arrange(Borough) %>%
+  collect()
+arrow_time <- toc(quiet = TRUE)
+
+```
+
+Code for sql using DuckDB
+
+```{r}
+#| label: SQL with DuckDB
+# open connection to DuckDB and create a database
+
+con <- dbConnect(duckdb(), dbdir = "duckdb" )
+
+# register the  datasets as  sql tables, 
+
+duckdb_register_arrow(con, "ny_taxi_sql", ny_taxi)
+duckdb_register_arrow(con, "ny_zones_sql", ny_zones)
+
+tic()
+borough_sql <- dbGetQuery(con, 
+"SELECT Borough, COUNT(*) AS n_duckdb
+FROM (
+  SELECT PULocationID, Borough, Zone, service_zone
+  FROM ny_taxi_sql
+  LEFT JOIN ny_zones_sql
+    ON (ny_taxi_sql.PULocationID = ny_zones_sql.LocationID)
+) 
+GROUP BY Borough
+ORDER BY Borough")
+sql_time <- toc(quiet = TRUE)
+dbDisconnect(con, shutdown=TRUE)
+
+```
+
+The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow `r arrow_time$callback_msg` while for DuckDB `r sql_time$callback_msg`.
+
+```{r}
+#| echo: false
+kable(borough_arrow %>%
+  left_join(borough_sql))
+
+
+```
+
+### Conclusion
+
+It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow are amazing.
