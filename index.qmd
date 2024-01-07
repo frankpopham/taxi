@@ -9,6 +9,8 @@ code-fold: true
 code-tools: true
 execute: 
   warning: false
+toc: true
+toc-depth: 3
 ---
 
 ```{r}
