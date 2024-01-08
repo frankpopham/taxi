@@ -129,4 +129,4 @@ kable(borough_arrow %>%
 
 ### Conclusion
 
-It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow are amazing.
+It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow is amazing.
