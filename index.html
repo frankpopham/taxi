@@ -3112,7 +3112,7 @@ vertical-align: -.125em;
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>The purpose of this note is to illustrate the ease with which we can wrangle big data (tens of millions of observations).</p>
 <p>First, we store the data in an efficient format using <a href="https://parquet.apache.org/docs/">Parquet</a>.</p>
-<p>Second, we analyse Paraquet files using <a href="https://arrow.apache.org/docs/r/">Apache Arrow in R</a> and <a href="https://duckdb.org/">DuckDB</a> for SQL.</p>
+<p>Second, we analyse Parquet files using <a href="https://arrow.apache.org/docs/r/">Apache Arrow in R</a> and <a href="https://duckdb.org/">DuckDB</a> for SQL.</p>
 </section>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
@@ -3204,7 +3204,7 @@ vertical-align: -.125em;
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con, <span class="at">shutdown=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow 9.645 sec elapsed while for DuckDB 4.147 sec elapsed.</p>
+<p>The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow 9.674 sec elapsed while for DuckDB 4.178 sec elapsed.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -3745,7 +3745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>First, we store the data in an efficient format using <span class="co">[</span><span class="ot">Parquet</span><span class="co">](https://parquet.apache.org/docs/)</span>.</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Second, we analyse Paraquet files using <span class="co">[</span><span class="ot">Apache Arrow in R</span><span class="co">](https://arrow.apache.org/docs/r/)</span> and <span class="co">[</span><span class="ot">DuckDB</span><span class="co">](https://duckdb.org/)</span> for SQL.</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Second, we analyse Parquet files using <span class="co">[</span><span class="ot">Apache Arrow in R</span><span class="co">](https://arrow.apache.org/docs/r/)</span> and <span class="co">[</span><span class="ot">DuckDB</span><span class="co">](https://duckdb.org/)</span> for SQL.</span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data</span></span>
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
