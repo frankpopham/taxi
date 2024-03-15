@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Frank Popham">
-<meta name="dcterms.date" content="2024-01-07">
+<meta name="dcterms.date" content="2024-03-15">
 
 <title>Working efficiently with big data</title>
 <style>
@@ -3096,7 +3096,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 7, 2024</p>
+      <p class="date">March 15, 2024</p>
     </div>
   </div>
   
@@ -3204,7 +3204,7 @@ vertical-align: -.125em;
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con, <span class="at">shutdown=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow 9.943 sec elapsed while for DuckDB 4.408 sec elapsed.</p>
+<p>The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow 9.674 sec elapsed while for DuckDB 4.157 sec elapsed.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -3258,7 +3258,7 @@ vertical-align: -.125em;
 </section>
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
-<p>It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow are amazing.</p>
+<p>It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow is amazing.</p>
 <!-- -->
 
 </section>
@@ -3843,7 +3843,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conclusion</span></span>
 <span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow are amazing.</span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>It is possible to efficiently store and manipulate big data from R. Arrow commands are linked to dplyr and so while there is a lot you can do with them, the aim will often to be to work to reduce big data to a smaller size to work directly with in R memory (RAM). The speed of DuckDB and Arrow is amazing.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

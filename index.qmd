@@ -40,7 +40,7 @@ The data if held in csv format are very large. The January 2014 data is 1.2GB so
 
 ### Efficient storage
 
-Paraquet format is specifically designed for working with big data efficiently. The January 2014 data in Paraquet format is just 0.164GB. In Paraquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.
+Parquet format is specifically designed for working with big data efficiently. The January 2014 data in Parquet format is just 0.164GB. In Parquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.
 
 ### Efficient analysis
 
@@ -51,7 +51,7 @@ ny_taxi <- open_dataset("nyc_taxi_year_by_month")
 
 ```
 
-The question we are going to ask is how many journeys started in each of New York's boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Paraquet format.
+The question we are going to ask is how many journeys started in each of New York's boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Parquet format.
 
 ```{r}
 
