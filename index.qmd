@@ -28,9 +28,9 @@ library(knitr)
 
 The purpose of this note is to illustrate the ease with which we can wrangle big data (tens of millions of observations).
 
-First, we store the data in an efficient format using [Paraquet](https://parquet.apache.org/docs/).
+First, we store the data in an efficient format using [Parquet](https://parquet.apache.org/docs/).
 
-Second, we analyse Paraquet files using [Apache Arrow in R](https://arrow.apache.org/docs/r/) and [DuckDB](https://duckdb.org/) for SQL.
+Second, we analyse Parquet files using [Apache Arrow in R](https://arrow.apache.org/docs/r/) and [DuckDB](https://duckdb.org/) for SQL.
 
 ### Data
 

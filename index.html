@@ -3111,7 +3111,7 @@ vertical-align: -.125em;
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>The purpose of this note is to illustrate the ease with which we can wrangle big data (tens of millions of observations).</p>
-<p>First, we store the data in an efficient format using <a href="https://parquet.apache.org/docs/">Paraquet</a>.</p>
+<p>First, we store the data in an efficient format using <a href="https://parquet.apache.org/docs/">Parquet</a>.</p>
 <p>Second, we analyse Paraquet files using <a href="https://arrow.apache.org/docs/r/">Apache Arrow in R</a> and <a href="https://duckdb.org/">DuckDB</a> for SQL.</p>
 </section>
 <section id="data" class="level3">
@@ -3121,7 +3121,7 @@ vertical-align: -.125em;
 </section>
 <section id="efficient-storage" class="level3">
 <h3 class="anchored" data-anchor-id="efficient-storage">Efficient storage</h3>
-<p>Paraquet format is specifically designed for working with big data efficiently. The January 2014 data in Paraquet format is just 0.164GB. In Paraquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.</p>
+<p>Parquet format is specifically designed for working with big data efficiently. The January 2014 data in Parquet format is just 0.164GB. In Parquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.</p>
 </section>
 <section id="efficient-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="efficient-analysis">Efficient analysis</h3>
@@ -3132,7 +3132,7 @@ vertical-align: -.125em;
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ny_taxi <span class="ot">&lt;-</span> <span class="fu">open_dataset</span>(<span class="st">&quot;nyc_taxi_year_by_month&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The question we are going to ask is how many journeys started in each of New York’s boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Paraquet format.</p>
+<p>The question we are going to ask is how many journeys started in each of New York’s boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Parquet format.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -3204,7 +3204,7 @@ vertical-align: -.125em;
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con, <span class="at">shutdown=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow 9.674 sec elapsed while for DuckDB 4.157 sec elapsed.</p>
+<p>The table below confirms that both methods yielded the same result and did so extremely quickly given the size of the data. For Arrow 9.645 sec elapsed while for DuckDB 4.147 sec elapsed.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -3743,7 +3743,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>The purpose of this note is to illustrate the ease with which we can wrangle big data (tens of millions of observations).</span>
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>First, we store the data in an efficient format using <span class="co">[</span><span class="ot">Paraquet</span><span class="co">](https://parquet.apache.org/docs/)</span>.</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>First, we store the data in an efficient format using <span class="co">[</span><span class="ot">Parquet</span><span class="co">](https://parquet.apache.org/docs/)</span>.</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Second, we analyse Paraquet files using <span class="co">[</span><span class="ot">Apache Arrow in R</span><span class="co">](https://arrow.apache.org/docs/r/)</span> and <span class="co">[</span><span class="ot">DuckDB</span><span class="co">](https://duckdb.org/)</span> for SQL.</span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
@@ -3755,7 +3755,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Efficient storage</span></span>
 <span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>Paraquet format is specifically designed for working with big data efficiently. The January 2014 data in Paraquet format is just 0.164GB. In Paraquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>Parquet format is specifically designed for working with big data efficiently. The January 2014 data in Parquet format is just 0.164GB. In Parquet format all 24 months occupy 4.2GB, which is much more manageable . As an R user this is how I am going to illustrate the functionality via R but DuckDB can be used without R of course.</span>
 <span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### Efficient analysis</span></span>
 <span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
@@ -3766,7 +3766,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>The question we are going to ask is how many journeys started in each of New York&#39;s boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Paraquet format.</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>The question we are going to ask is how many journeys started in each of New York&#39;s boroughs during the two years. We need to join the names of the boroughs to the main data so we set up the CSV file as a Parquet format.</span>
 <span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>ny_zones <span class="ot">&lt;-</span> <span class="fu">read_csv_arrow</span>(<span class="st">&quot;taxi+_zone_lookup.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
